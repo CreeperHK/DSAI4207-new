@@ -1,0 +1,15 @@
+{
+  "out_dir": "e:\\DSAI\\DSAI4207-new\\outputs\\smoke",
+  "data": "e:\\DSAI\\DSAI4207-new\\data\\processed\\smoke.jsonl",
+  "n_samples": 50,
+  "epochs": 1.0,
+  "lr": 0.0002,
+  "batch": 1,
+  "accum": 8,
+  "effective_batch": 8,
+  "max_seq_length": 1024,
+  "optim": "adamw_8bit",
+  "train_minutes": 0.36,
+  "peak_memory_allocated_gb": 4.138,
+  "peak_memory_reserved_gb": 4.279
+}
