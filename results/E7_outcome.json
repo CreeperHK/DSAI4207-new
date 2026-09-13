@@ -1,0 +1,43 @@
+{
+  "experiment": "E7",
+  "description": "QLoRA 不跳過 linear_attn（差異化受控實驗）",
+  "model": "Qwen3.5-2B-Base",
+  "method": "text_only=True + FastVisionModel",
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "bitsandbytes": "0.50.2",
+  "control_bf16": {
+    "label": "A: bf16 LoRA（對照組）",
+    "quant": "bf16",
+    "loaded": true,
+    "forward_ok": true,
+    "train_ok": true,
+    "error_type": null,
+    "error_msg": null,
+    "trainable_params": 10911744,
+    "trainable_pct": 0.005765061373307708,
+    "vram_after_load_gb": 3.564,
+    "peak_vram_gb": 4.162,
+    "trainable_vision_tensors": 0,
+    "trainable_linear_attn_tensors": 0,
+    "hit_expected_marker": false
+  },
+  "treatment_qlora": {
+    "label": "B: QLoRA 不跳過 linear_attn（實驗組）",
+    "quant": "qlora",
+    "loaded": true,
+    "forward_ok": true,
+    "train_ok": true,
+    "error_type": null,
+    "error_msg": null,
+    "trainable_params": 10911744,
+    "trainable_pct": 0.009045043303431293,
+    "vram_after_load_gb": 2.628,
+    "peak_vram_gb": 3.218,
+    "trainable_vision_tensors": 0,
+    "trainable_linear_attn_tensors": 0,
+    "hit_expected_marker": false
+  },
+  "outcome": "qlora_worked_modest_saving",
+  "interpretation": "QLoRA 可訓練，只省下 0.94 GB —— 效益有限，且需承擔 4-bit 品質風險，建議仍以 bf16 LoRA 為主力。"
+}
